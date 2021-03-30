@@ -206,9 +206,11 @@ const question = document.querySelector(".question")
 const answer = document.querySelector(".answer")
 const show = document.querySelector(".show")
 const next = document.querySelector(".next")
+const start__Disappear = document.querySelector(".start__disappear h1")
 
 start.addEventListener("click",()=>{
     start.classList.add("hide");
+    start__Disappear.classList.add("hide");
     show.classList.remove("hide");
     next.classList.remove("hide");
     question.innerHTML+= questions[random]["question"];
@@ -223,6 +225,9 @@ start.addEventListener("click",()=>{
     })
 
 next.addEventListener('click', function(){
+  if(!$(".answer").hasClass("hide")){
+    $(".answer").addClass("hide");
+  }
     const random=Math.floor(Math.random()* questions.length)
     question.innerHTML= questions[random]["question"];
     answer.innerHTML= questions[random]["answer"];
