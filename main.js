@@ -213,8 +213,7 @@ start.addEventListener("click",()=>{
     start__Disappear.classList.add("hide");
     show.classList.remove("hide");
     next.classList.remove("hide");
-    question.innerHTML+= questions[random]["question"];
-    answer.innerHTML+= questions[random]["answer"];
+    removeRandom(questions)
     $(".show").click(function(){
       if($(".answer").hasClass("hide")){
         $(".answer").removeClass("hide");
@@ -228,14 +227,18 @@ next.addEventListener('click', function(){
   if(!$(".answer").hasClass("hide")){
     $(".answer").addClass("hide");
   }
-    const random=Math.floor(Math.random()* questions.length)
+  removeRandom(questions)
+})
+
+const removeRandom = (array) => {
+    const random = Math.floor(Math.random() * array.length);
     question.innerHTML= questions[random]["question"];
     answer.innerHTML= questions[random]["answer"];
-    questions.pop()
-    if (questions.length == "0"){
+    const el = array.splice(random, 1);
+    console.log(el);
+    if (questions.length == 0){
       question.innerHTML= `<h1>Good Job <br>No More Questions</h1>`
       answer.innerHTML="" 
     };
-})
-
+  }
 
