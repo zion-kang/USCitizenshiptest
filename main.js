@@ -231,14 +231,15 @@ next.addEventListener('click', function(){
 })
 
 const removeRandom = (array) => {
+  if (questions.length == 0){
+    question.innerHTML= `<h1>Good Job <br>No More Questions</h1>`
+    answer.innerHTML="" 
+  };
     const random = Math.floor(Math.random() * array.length);
     question.innerHTML= questions[random]["question"];
     answer.innerHTML= questions[random]["answer"];
     const el = array.splice(random, 1);
     console.log(el);
-    if (questions.length == 0){
-      question.innerHTML= `<h1>Good Job <br>No More Questions</h1>`
-      answer.innerHTML="" 
-    };
+
   }
 
